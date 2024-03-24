@@ -1,0 +1,67 @@
+@import 'reset';
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.header {
+    width: 100%;
+    height: 60px;
+}
+
+.header__title {
+    text-align: center;
+    padding: 15px 0;
+
+    font-size: 30px;
+}
+
+.pallette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.palette__color {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 450px;
+}
+
+.color__hex {
+    padding: 10px;
+
+    transition: ease-in background-color 0.1s;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+    }
+}
+
+.lock {
+    font-size: 24px;
+    padding: 10px;
+    transition: ease-in background-color 0.1s;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+    }
+}
+
+.generate-palette__btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+
+    background-color: lightcoral;
+    border-radius: 15px;
+    transition: ease-in 0.1s;
+
+    &:active {
+        background-color: coral;
+    }
+}

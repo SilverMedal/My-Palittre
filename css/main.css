@@ -1,0 +1,130 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+/* Links */
+a, a:link, a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+/* Common */
+aside, nav, footer, header, section, main {
+  display: block; }
+
+h1, h2, h3, h4, h5, h6, p {
+  font-size: inherit;
+  font-weight: inherit; }
+
+ul, ul li {
+  list-style: none; }
+
+img {
+  vertical-align: top; }
+
+img, svg {
+  max-width: 100%;
+  height: auto; }
+
+address {
+  font-style: normal; }
+
+/* Form */
+input, textarea, button, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent; }
+
+input::-ms-clear {
+  display: none; }
+
+button, input[type="submit"] {
+  display: inline-block;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer; }
+
+input:focus, input:active,
+button:focus, button:active {
+  outline: none; }
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+label {
+  cursor: pointer; }
+
+legend {
+  display: block; }
+
+body {
+  font-family: 'Rubik', sans-serif; }
+
+.header {
+  width: 100%;
+  height: 60px; }
+
+.header__title {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 30px; }
+
+.pallette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); }
+
+.palette__color {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  height: 450px; }
+
+.color__hex {
+  padding: 10px;
+  -webkit-transition: ease-in background-color 0.1s;
+  transition: ease-in background-color 0.1s;
+  border-radius: 5px; }
+  .color__hex:hover {
+    background-color: rgba(0, 0, 0, 0.1); }
+
+.lock {
+  font-size: 24px;
+  padding: 10px;
+  -webkit-transition: ease-in background-color 0.1s;
+  transition: ease-in background-color 0.1s;
+  border-radius: 5px; }
+  .lock:hover {
+    background-color: rgba(0, 0, 0, 0.1); }
+
+.generate-palette__btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: lightcoral;
+  border-radius: 15px;
+  -webkit-transition: ease-in 0.1s;
+  transition: ease-in 0.1s; }
+  .generate-palette__btn:active {
+    background-color: coral; }
