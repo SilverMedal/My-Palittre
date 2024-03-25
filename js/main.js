@@ -1,7 +1,7 @@
 const columnColors = document.querySelectorAll('.palette__color');
 const btnForGenerateColor = document.querySelector('.generate-palette__btn');
 
-setRandomColor();
+
 
 document.addEventListener('click', event => {
     const type = event.target.dataset.type;
@@ -13,20 +13,71 @@ document.addEventListener('click', event => {
             : event.target.children[0];
         node.classList.toggle('fa-lock-open');
         node.classList.toggle('fa-lock');
+    } else if (type === 'copy') {
+        copyTextFromBoard(event.target.textContent);
     }
 })
 
-function setRandomColor() {
-    columnColors.forEach((col) => {
-        const color = chroma.random();
+btnForGenerateColor.addEventListener('click', () => {
+    setRandomColor();
+})
+
+function copyTextFromBoard(text) {
+    return navigator.clipboard.writeText(text);
+}
+
+function updateHashColor(colors = []) {
+    document.location.hash = colors.map((col) => {
+        return col.toString().substring(1);
+    })
+        .join('-');
+}
+
+function generateColorsFromHash() {
+    if (document.location.hash.length > 1) {
+        return document.location.hash
+            .substring(1)
+            .split('-')
+            .map(color => '#' + color);
+    }
+    return [];
+}
+
+function setRandomColor(isInit) {
+    let colors = isInit ? generateColorsFromHash() : [];
+    columnColors.forEach((col, index) => {
+        const isLocked = col.querySelector('i').classList.contains('fa-lock');
         let nameColor = col.querySelector('p');
         let buttonLock = col.querySelector('.lock');
+
+        if (isLocked) {
+            colors.push(nameColor.textContent);
+            return;
+        }
+
+        const color = isInit
+            ? colors[index]
+                ? colors[index]
+                : chroma.random()
+        : chroma.random();
+
+        if (!isInit) {
+            colors.push(color);
+        }
+
+
+
         col.style.background = color;
         nameColor.textContent = color;
 
         setTextColor(nameColor, color);
         setTextColor(buttonLock, color);
+
     })
+    if (!isInit) {
+        updateHashColor(colors);
+    }
+
 }
 
 function setTextColor(text, color) {
@@ -34,7 +85,5 @@ function setTextColor(text, color) {
     text.style.color = luminance > 0.5 ? 'black' : 'white';
 }
 
+setRandomColor(true);
 
-btnForGenerateColor.addEventListener('click', () => {
-    setRandomColor();
-})
